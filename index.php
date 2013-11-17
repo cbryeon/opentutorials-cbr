@@ -96,6 +96,7 @@ $topic = mysql_fetch_assoc($result);
             <nav>
                 <ul>
                     <?php
+                    //좌측 리스트 띄우기
                     $sql="select id,title from topic";
                     $result=mysql_query($sql);
                     while($row=mysql_fetch_assoc($result)) {
@@ -107,6 +108,7 @@ $topic = mysql_fetch_assoc($result);
                 </ul>
             </nav>
             <article>
+           	<!-- content 띄워주기 ( 내용)-->
                 <?php
                 if(!empty($topic)){
                 ?>
