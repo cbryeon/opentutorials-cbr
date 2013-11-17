@@ -1,4 +1,4 @@
-<?php
+<?
 include 'database.php';
 
 if(!empty($_GET['id'])) {
@@ -75,7 +75,7 @@ $topic = mysql_fetch_assoc($result);
             }
         </style>
     </head>
-  
+ 
     <body id="body">
         <div>
             <header>
@@ -87,31 +87,30 @@ $topic = mysql_fetch_assoc($result);
             </div>
             <nav>
                 <ul>
-                <li><a href="add.php">토픽추가</a></li><br>
-                	
                     <?php
-                    //좌측 리스트 띄우기
                     $sql="select id,title from topic";
                     $result=mysql_query($sql);
                     while($row=mysql_fetch_assoc($result)) {
                     echo "
-                    <li><a href=\"?id={$row['id']}\">{$row['title']}</a></li>";
+                    <li>
+                        <a href=\"index.php?id={$row['id']}\">{$row['title']}</a></li>";
                         }
                         ?>
                 </ul>
             </nav>
             <article>
-           	<!-- content 띄워주기 ( 내용)-->
-                <?php
-                if(!empty($topic)){
-                ?>
-                <h2><?=$topic['title']?></h2>
-                <div class="description">
-                    <?=$topic['description']?>
-                </div>
-                <?php
-                }
-                ?>
+                    <form action="add_process.php" method="post">
+                        <h2>
+                        <label>제목</label>
+                        <input type="text" name="title" />
+                    </h2>
+                        <div class="description">
+                        <label>본문<label>
+                                <textarea name="description">
+                                </textarea>                            
+                        </div>
+                        <input type="submit" />
+                    </form>
             </article>
         </div>
     </body>
